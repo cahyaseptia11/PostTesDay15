@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
+import static org.testng.AssertJUnit.assertEquals;
 
 import java.sql.Driver;
 import java.util.concurrent.TimeUnit;
@@ -39,13 +40,15 @@ public class CahyaDay15 {
         submit.click();
 
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
-        WebElement alert = driver.findElement(By.xpath("//h2"));
+        WebElement alert = driver.findElement(By.cssSelector("div[class='table-wrapper'] h2"));
+
         String expect = "Payment successfull!";
-        String actual = alert.getText().toString();
-        asserEquals(actual,expect);
+
+        assertEquals(alert.getText(),expect);
+
 
     }
 
-    private void asserEquals(String actual, String expect) {
-    }
+//    private void asserEquals(String actual, String expect) {
+//    }
 }
